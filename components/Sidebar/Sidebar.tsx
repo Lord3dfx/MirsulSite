@@ -11,7 +11,7 @@ export function Sidebar({searchCards, className, ...props}:SidebarProps):JSX.Ele
 
     return(
     <div className={styles.sidebar} {...props}>
-        <Image src={"/logo.jpg"} alt="logo" width={150} height={150}/>
+        <Image src={"/Logo.jpg"} alt="logo" width={150} height={150}/>
         <a className={styles.newcard} href="/new">Добавить карту</a>
         <p>Найти карту</p>
         <div className={styles.searchblock}>
