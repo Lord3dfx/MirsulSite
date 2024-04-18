@@ -1,0 +1,87 @@
+.wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+}
+
+.cardPreview{
+    position: relative;
+    border: 1px solid #000;
+    border-radius: 10px;
+    width: 300px;
+    height: 450px;
+    margin-left: 100px;
+    margin-top: 100px;
+}
+
+.texta{
+    resize: none;
+}
+
+.upload{
+    display: grid;
+    grid-template-columns: auto 50px;
+    justify-content: start;
+    margin-bottom: 10px;
+}
+
+.cardform{
+   display: grid;
+   gap: 10px;
+   align-content: center;
+   grid-column: start / middle;
+}
+
+.cardeditor{
+    display: grid;
+    grid-template-columns: [start] 1fr [middle] 1fr [end];
+    margin-top: 100px;
+}
+
+.sbutton{
+background: #8DFFB9;
+padding: 5px;
+width: 90px;
+text-align: center;
+text-decoration: none;
+color: black;
+cursor: pointer;
+}
+.cbutton{
+    background: #FF0000;
+    padding: 5px;
+    width: 90px;
+    text-align: center;
+    text-decoration: none;
+    color: black
+}
+
+.buttons{
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    grid-column: start / middle;
+}
+
+.img{
+    border-radius: 10px;
+}
+
+.note{
+    position: absolute;
+    top: -25px;
+    background: #fff;
+    width: 300px;
+    text-align: center ;
+}
+
+.show{
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+.hide{
+    opacity: 0;
+    transition: opacity 0.5s;
+}

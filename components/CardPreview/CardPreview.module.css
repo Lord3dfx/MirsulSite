@@ -1,0 +1,25 @@
+.card{
+    display: grid;
+    position: relative;
+    grid-template-rows: 1fr auto 1fr;
+    border: 1px solid #000;
+    border-radius: 10px;
+    justify-items: center;
+    align-items: flex-end;
+    padding: 20px 0px 20px 0px;
+    gap: 20px;
+    width: 320px;
+    height: 460px;
+    margin: 20px;
+}
+
+.editblock{
+    position: absolute;
+    right: 0px;
+    bottom: 50px;
+    height: 120px;
+    width: 60px;
+    border: 1px solid #000;
+    border-right: none;
+    align-content: center;
+}

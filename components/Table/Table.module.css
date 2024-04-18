@@ -1,0 +1,12 @@
+.table{
+    display: grid;
+    right: 5%;
+    grid-template-columns: repeat(3, 1fr);
+    margin-left: 350px;
+}
+
+@media screen and (max-width: 1200px) {
+    .table{
+        grid-template-columns: 1fr 1fr;
+    }
+}
