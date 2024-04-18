@@ -17,9 +17,32 @@
     position: absolute;
     right: 0px;
     bottom: 50px;
-    height: 120px;
+    height: 122px;
     width: 60px;
     border: 1px solid #000;
     border-right: none;
     align-content: center;
+}
+
+.edit{
+    background: #dfe36f;
+    transition: all 0.5s ease;
+    border-bottom: 1px solid #000;
+    padding: 3.5px 0px;
+}
+.edit:hover{
+    background:  #8177f8;
+  
+}
+
+.delete{
+    background: #dfe36f;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    padding: 3.5px 0px;
+   
+}
+.delete:hover{
+    background:  #8177f8;
+  
 }

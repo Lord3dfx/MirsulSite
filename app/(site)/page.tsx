@@ -5,6 +5,7 @@ import styles from "./page.module.css";
 import { cardapi } from "@/api/cardapi";
 import { ICard } from "@/interfaces/cardData";
 import { useEffect, useState } from "react";
+import Loading from "./loading";
 
 
 export default function Home() {
@@ -41,7 +42,9 @@ useEffect(() => {
   return(
     <div className={styles.wrapper}>
       <Sidebar searchCards={searchCards}/>
-      <Table cards={filter} update={fetchData}/>
+      {cards.length > 0 
+        ? <Table cards={filter} update={fetchData}/>
+        : <Loading/>}
     </div>
   )
 }

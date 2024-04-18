@@ -5,7 +5,8 @@ import styles from './CardPreview.module.css'
 import  Image  from "next/image"
 import Link from "next/link";
 import { cardapi } from "@/api/cardapi";
-
+import Edit from '@/public/edit.svg'
+import Delete from '@/public/delete.svg'
 
 export function CardPreview({update, id, name, type ,className, ...props}:CardPreviewProps):JSX.Element {
 
@@ -19,9 +20,8 @@ export function CardPreview({update, id, name, type ,className, ...props}:CardPr
         <p>{name}</p>
         <p>{type}</p>
         <div className={styles.editblock}>
-            <p><Link href={`/edit/${id}`}>Edit</Link></p>
-            <hr />
-            <p onClick={() => deleteCard(id!)}>Del</p>
+        <Link href={`/edit/${id}`}><p className={styles.edit}><Edit/></p></Link>
+        <p className={styles.delete} onClick={() => deleteCard(id!)}><Delete/></p>
         </div>
     </div>
     )

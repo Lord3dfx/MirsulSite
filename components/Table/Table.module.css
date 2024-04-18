@@ -5,6 +5,13 @@
     margin-left: 350px;
 }
 
+.notfound{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+}
+
 @media screen and (max-width: 1200px) {
     .table{
         grid-template-columns: 1fr 1fr;
