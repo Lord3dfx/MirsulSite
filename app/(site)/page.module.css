@@ -3,12 +3,16 @@
     grid-template-columns: 1fr 1fr;
     
 }
-
-/* HTML: <div class="loader"></div> */
-.loading {
-    position: absolute;
+.divloading{
+  position: absolute;
     top: 50%;
     left: 50%;
+}
+.ploading{
+  right: 100px;
+}
+/* HTML: <div class="loader"></div> */
+.loading { 
     width: 50px;
     aspect-ratio: 1;
     display: grid;

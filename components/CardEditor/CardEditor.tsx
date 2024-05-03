@@ -41,17 +41,20 @@ export function CardEditor({id ,className, ...props}:CardEditorProps) {
     }
 
     const sendCard = async () => {
-        if(!id){
+        if(!card?.id){
             const res = await cardapi.createCard(card!)
+            const rescard:Promise<ICard> =await res.json()
+            
             if(res.status === 200){
                 ShowNote('Карта успешно создана', '#47ff6c')
+                setCard({...card, id: (await rescard).id})
             }
             else{
                 ShowNote('Что-то пошло не так...', '#ff4a3d')
             }
         }
         else{
-            const res =await cardapi.saveCard(id, card!)
+            const res =await cardapi.saveCard(card.id, card!)
             if(res.status === 204){
                 ShowNote('Карта сохранена', '#47ff6c')
             }
