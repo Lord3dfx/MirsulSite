@@ -35,7 +35,7 @@ useEffect(() => {
 
  function searchCards(param:string){
       const sparams = param.toLocaleLowerCase()
-      const cardArray = cards.filter( (item) => item.cardName?.toLocaleLowerCase().includes(sparams) || item.status?.toLocaleLowerCase().includes(sparams) )
+      const cardArray = cards.filter( (item) => item.cardName?.toLocaleLowerCase().includes(sparams) || item.deck?.toLocaleLowerCase().includes(sparams) )
           setFilter(cardArray)
   }
 
