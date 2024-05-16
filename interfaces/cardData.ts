@@ -1,5 +1,16 @@
 export interface ICard {
     id?: string,
     cardName?: string,
-    status?: string
+    cardRange?: string,
+    description?: string,
+    img?: string,
+    power?: string,
+    energy?: string,
+    addCrit?: string,
+    addPower?: string,
+    addEnergy?: string,
+    deck?: string,
+    firstmech?:string,
+    secondmech?:string,
+    thirdmech?:string,
 }

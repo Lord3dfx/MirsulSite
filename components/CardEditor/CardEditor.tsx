@@ -35,7 +35,8 @@ export function CardEditor({id ,className, ...props}:CardEditorProps) {
     }
     },[id])
 
-    const writeCard = (e:HTMLInputElement) =>{
+    const writeCard = (e:any) =>{
+   
         const updateCard:ICard = {...card, [e.name]: e.value}
         setCard(updateCard)
     }
@@ -89,7 +90,8 @@ export function CardEditor({id ,className, ...props}:CardEditorProps) {
         const reader = new FileReader()
         reader.readAsDataURL(pic)
         reader.onload = ()=>{
-            setLoadedimage(reader.result as string)
+            const updatecard = {...card, img: reader.result as string}
+            setCard(updatecard)
         }
     }
 
@@ -100,31 +102,70 @@ export function CardEditor({id ,className, ...props}:CardEditorProps) {
                 [styles.show]: showNote,
                 [styles.hide]: !showNote
             })}></p>
-            <Image className={styles.img} src={loadedimage || '/image.jpg'} alt="Изображение" width={300} height={200}/>
-            <p>{card?.cardName}</p>
-            <p>{card?.status}</p>
-            <p>{card?.id}</p>
+            <Image className={styles.img} src={card?.img || '/image.jpg'} alt="Изображение" width={400} height={250}/>
+            <p className={styles.viewname}>{card?.cardName}</p>
+            <p className={styles.viewrange}>{card?.cardRange}</p>
+            <p className={styles.viewdeck}>{card?.deck}</p>
+            <p className={styles.viewpower}>{card?.power}</p>
+            <p className={styles.viewenergy}>{card?.energy}</p>
+            <p className={styles.viewaddcrit}>{card?.addCrit}</p>
+            <p className={styles.viewaddpower}>{card?.addPower}</p>
+            <p className={styles.viewaddenergy}>{card?.addEnergy}</p>
+            
+            
+            <p className={styles.viewdesc}>{card?.description}</p>
+            
+            <p className={styles.viewfirstm}>{card?.firstmech}</p>
+            <p className={styles.viewsecondm}>{card?.secondmech}</p>
+            <p className={styles.viewthirdm}>{card?.thirdmech}</p>
+            <p className={styles.viewid}>{card?.id}</p>
             
         </div>
         <div className={styles.cardeditor}>
-            <form className={styles.cardform}>
+                <div>
                 <p>Имя карты</p>
-                <input onChange={(e)=>writeCard(e.target)} type="text" name="cardName" defaultValue={card?.cardName}/>
-                <p>Статус</p>
-                <input onChange={(e)=>writeCard(e.target)} type="text" name="status" defaultValue={card?.status}/>
+                <input onChange={(e)=>writeCard(e.target)} type="text" name="cardName" defaultValue={card?.cardName} size={40}/>
+                <p>Ранг карты</p>
+                <input onChange={(e)=>writeCard(e.target)} type="text" name="cardRange" defaultValue={card?.cardRange} size={40}/>
+                <p>Принадлежность колоде</p>
+                <input onChange={(e)=>writeCard(e.target)} type="text" name="deck" defaultValue={card?.deck} size={40}/>
                 <p>Описание</p>
-                <textarea rows={10} cols={45} wrap="soft" className={styles.texta}/>
+                <textarea onChange={(e)=>writeCard(e.target)} rows={10} cols={38} wrap="soft" className={styles.texta} name="description" defaultValue={card?.description}/>
+                </div>
+
+                <div>
+                <p>Стоимость</p>
+                <p>С</p>
+                <input onChange={(e)=>writeCard(e.target)} type="text" name="power" defaultValue={card?.power} size={2}/>
+                <p>Э</p>
+                <input onChange={(e)=>writeCard(e.target)} type="text" name="energy" defaultValue={card?.energy} size={2}/>
+                <p>Дополнительная стоимость</p>
+                <p>К</p>
+                <input onChange={(e)=>writeCard(e.target)} type="text" name="addCrit"  size={2}/>
+                <p>С</p>
+                <input onChange={(e)=>writeCard(e.target)} type="text" name="addPower"  size={2}/>
+                <p>Э</p>
+                <input onChange={(e)=>writeCard(e.target)} type="text" name="addEnergy"  size={2}/>
+                </div>
+
+                <div>
+                <p>Механики</p>
                 <p>1</p>
-                <input type="text"/>
+                <input onChange={(e)=>writeCard(e.target)} type="text" name="firstmech"/>
                 <p>2</p>
-                <input type="text"/>
-                <p>Редкость</p>
-                <input type="text"/>
+                <input onChange={(e)=>writeCard(e.target)} type="text" name="secondmech"/>
+                <p>3</p>
+                <input onChange={(e)=>writeCard(e.target)} type="text" name="thirdmech"/>
+                </div>
+
+                <div>
+                
+                </div>
+
                 <div className={styles.upload}>
                 <p>Загрузить изображение</p>
                 <input type="file" accept="image/*" name="imageload" onChange={(e)=>loadImage(e)} ></input>
                 </div>
-            </form>
             <div className={styles.buttons}>
             <a className={styles.sbutton} onClick={sendCard}>Сохранить</a>
             <a className={styles.cbutton} href={`/`}>Назад</a>
