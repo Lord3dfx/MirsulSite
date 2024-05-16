@@ -20,6 +20,7 @@ export const cardapi = {
     createCard: async (card:ICard) => {
         const res = await fetch(api.getAllCards, {
             method: 'POST',
+            mode: 'no-cors',
             body: JSON.stringify(card),
             headers: {
                 'Content-type': 'application/json',
