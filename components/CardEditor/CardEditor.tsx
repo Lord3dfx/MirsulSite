@@ -44,7 +44,7 @@ export function CardEditor({id ,className, ...props}:CardEditorProps) {
     const sendCard = async () => {
         if(!card?.id){
             const res = await cardapi.createCard(card!)
-            const rescard:Promise<ICard> =await res.json()
+            const rescard:Promise<ICard> = await res.json()
             
             if(res.status === 200){
                 ShowNote('Карта успешно создана', '#47ff6c')
@@ -167,7 +167,7 @@ export function CardEditor({id ,className, ...props}:CardEditorProps) {
                 <input type="file" accept="image/*" name="imageload" onChange={(e)=>loadImage(e)} ></input>
                 </div>
             <div className={styles.buttons}>
-            <a className={styles.sbutton} onClick={sendCard}>Сохранить</a>
+            <a className={styles.sbutton} onClick={ () => sendCard()}>Сохранить</a>
             <a className={styles.cbutton} href={`/`}>Назад</a>
             </div>
         </div>
