@@ -12,7 +12,7 @@ export function Table({update, cards, className, ...props}:TableProps) {
         if(cards.length > 0)
             return(
                 <div className={styles.table} {...props}>
-        {cards.map((item) => <CardPreview update={update}  key={item.id} id={item.id} name={item.cardName} type={item.deck} />)}
+        {cards.map((item) => <CardPreview update={update}  key={item.id} id={item.id} img={item.img} name={item.cardName} deck={item.deck} />)}
                 </div>
             )
             else

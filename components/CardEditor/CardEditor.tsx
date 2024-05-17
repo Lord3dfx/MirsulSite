@@ -13,9 +13,9 @@ import cn from "classnames"
 export function CardEditor({id ,className, ...props}:CardEditorProps) {
 
     const [card, setCard] = useState<ICard | null>(null)
-    const [loadedimage, setLoadedimage] = useState<string>("")
     const [showNote, setShowNote] = useState<boolean>(false)
     const myRef = useRef<HTMLParagraphElement>(null)
+    
 
     useEffect(()=> {
         if(!id)
@@ -42,6 +42,7 @@ export function CardEditor({id ,className, ...props}:CardEditorProps) {
     }
 
     const sendCard = async () => {
+        if(card !== null){
         if(!card?.id){
             const res = await cardapi.createCard(card!)
             const rescard:Promise<ICard> = await res.json()
@@ -63,6 +64,11 @@ export function CardEditor({id ,className, ...props}:CardEditorProps) {
                 ShowNote('Что-то пошло не так...', '#ff4a3d')
             }
     }
+}
+else{
+    ShowNote('Заполните хотя бы одно поле', '#ff4a3d')
+    return;
+}
     }
 
     const ShowNote = (text:string, color:string) =>{
@@ -102,7 +108,7 @@ export function CardEditor({id ,className, ...props}:CardEditorProps) {
                 [styles.show]: showNote,
                 [styles.hide]: !showNote
             })}></p>
-            <Image className={styles.img} src={card?.img || '/image.jpg'} alt="Изображение" width={400} height={250}/>
+            <Image className={styles.img} quality={50} src={card?.img || '/no-image-large.jpg'} alt="Изображение" width={400} height={250}/>
             <p className={styles.viewname}>{card?.cardName}</p>
             <p className={styles.viewrange}>{card?.cardRange}</p>
             <p className={styles.viewdeck}>{card?.deck}</p>
@@ -141,21 +147,21 @@ export function CardEditor({id ,className, ...props}:CardEditorProps) {
                 <input onChange={(e)=>writeCard(e.target)} type="text" name="energy" defaultValue={card?.energy} size={2}/>
                 <p>Дополнительная стоимость</p>
                 <p>К</p>
-                <input onChange={(e)=>writeCard(e.target)} type="text" name="addCrit"  size={2}/>
+                <input onChange={(e)=>writeCard(e.target)} type="text" name="addCrit"  size={2} defaultValue={card?.addCrit}/>
                 <p>С</p>
-                <input onChange={(e)=>writeCard(e.target)} type="text" name="addPower"  size={2}/>
+                <input onChange={(e)=>writeCard(e.target)} type="text" name="addPower"  size={2} defaultValue={card?.addPower}/>
                 <p>Э</p>
-                <input onChange={(e)=>writeCard(e.target)} type="text" name="addEnergy"  size={2}/>
+                <input onChange={(e)=>writeCard(e.target)} type="text" name="addEnergy"  size={2} defaultValue={card?.addEnergy}/>
                 </div>
 
                 <div>
                 <p>Механики</p>
                 <p>1</p>
-                <input onChange={(e)=>writeCard(e.target)} type="text" name="firstmech"/>
+                <input onChange={(e)=>writeCard(e.target)} type="text" name="firstmech" defaultValue={card?.firstmech}/>
                 <p>2</p>
-                <input onChange={(e)=>writeCard(e.target)} type="text" name="secondmech"/>
+                <input onChange={(e)=>writeCard(e.target)} type="text" name="secondmech" defaultValue={card?.secondmech}/>
                 <p>3</p>
-                <input onChange={(e)=>writeCard(e.target)} type="text" name="thirdmech"/>
+                <input onChange={(e)=>writeCard(e.target)} type="text" name="thirdmech" defaultValue={card?.thirdmech}/>
                 </div>
 
                 <div>
