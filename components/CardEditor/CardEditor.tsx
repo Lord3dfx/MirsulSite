@@ -112,19 +112,25 @@ else{
             <p className={styles.viewname}>{card?.cardName}</p>
             <p className={styles.viewrange}>{card?.cardRange}</p>
             <p className={styles.viewdeck}>{card?.deck}</p>
-            <p className={styles.viewpower}>{card?.power}</p>
-            <p className={styles.viewenergy}>{card?.energy}</p>
-            <p className={styles.viewaddcrit}>{card?.addCrit}</p>
-            <p className={styles.viewaddpower}>{card?.addPower}</p>
-            <p className={styles.viewaddenergy}>{card?.addEnergy}</p>
+            <p className={styles.viewpower} hidden={!card?.power}>C {card?.power}</p>
+            <p className={styles.viewenergy} hidden={!card?.energy}>Э {card?.energy}</p>
+            <p className={styles.viewaddcrit} hidden={!card?.addCrit}>К {card?.addCrit}</p>
+            <p className={styles.viewaddpower} hidden={!card?.addPower}>С {card?.addPower}</p>
+            <p className={styles.viewaddenergy} hidden={!card?.addEnergy}>Э {card?.addEnergy}</p>
             
             
             <p className={styles.viewdesc}>{card?.description}</p>
             
-            <p className={styles.viewfirstm}>{card?.firstmech}</p>
-            <p className={styles.viewsecondm}>{card?.secondmech}</p>
-            <p className={styles.viewthirdm}>{card?.thirdmech}</p>
-            <p className={styles.viewid}>{card?.id}</p>
+            <p className={cn(styles.viewfirstm,{
+                [styles.viewsmall]: card?.firstmech?.length! > 3
+            })} hidden={!card?.firstmech}>{card?.firstmech}</p>
+            <p className={cn(styles.viewsecondm,{
+                [styles.viewsmall]: card?.secondmech?.length! > 3
+            })} hidden={!card?.secondmech}>{card?.secondmech}</p>
+            <p className={cn(styles.viewthirdm,{
+                [styles.viewsmall]: card?.thirdmech?.length! > 3
+            })} hidden={!card?.thirdmech}>{card?.thirdmech}</p>
+            <p className={styles.viewid}>ID карты: {card?.id}</p>
             
         </div>
         <div className={styles.cardeditor}>

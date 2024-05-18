@@ -9,7 +9,9 @@
     left: 50%;
 }
 .ploading{
-  right: 100px;
+  position: absolute;
+    top: 100%;
+    left: -20%;
 }
 /* HTML: <div class="loader"></div> */
 .loading { 

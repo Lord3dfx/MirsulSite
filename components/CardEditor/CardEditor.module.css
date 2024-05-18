@@ -1,8 +1,8 @@
 .wrapper{
     display: grid;
-    grid-template-columns: 550px 1fr;
-    gap: 10px;
-    
+    grid-template-columns: 530px 1fr;
+    margin-top: 5%;
+    margin-left: 5%;
 }
 
 .cardPreview{
@@ -13,6 +13,7 @@
     height: 431px;
     margin-left: 80px;
     margin-top: 100px;
+    background: white;
 }
 
 .texta{
@@ -88,23 +89,29 @@ transition: all 0.5s ease;
     top: 0px;
     padding: 5px;
     background: #fff;
-    width: 20px;
-    height: 20px;
+    width: 45px;
+    height: 45px;
     text-align: center;
+    align-content: center;
     border-radius: 0px 10px 0px 0px;
-    overflow: hidden;
+    word-break: break-all;
+    font-size: 16px;
 }
 .viewdeck{
     border: 1px solid #000;
     position: absolute;
     right: 0px;
-    top: 30px;
+    top: 55px;
     padding: 5px;
     background: #fff;
-    width: 20px;
-    height: 20px;
+    width: 45px;
+    height: 45px;
     text-align: center;
+    align-content: center;
     overflow: hidden;
+    word-break: break-all;
+    font-size: 16px;
+    
 }
 .viewpower{
     border: 1px solid #000;
@@ -175,14 +182,13 @@ transition: all 0.5s ease;
 
 .viewdesc{
     border: 1px solid #000;
-    border-left: none;
     position: absolute;
     left: 60px;
-    top: 249.5px;
+    top: 250px;
     padding: 5px;
     background: #fff;
     width: 330px;
-    height: 171px;
+    height: 170px;
     white-space: pre;
     overflow: hidden;
     border-radius: 0px 0px 10px 0px;
@@ -242,6 +248,50 @@ transition: all 0.5s ease;
     padding: 5px;
     background: #fff;
     text-align: center;
-    
+    white-space: nowrap;
+}
+
+.viewid{
+    position: absolute;
+    top: 450px;
+    left: 50px;
+    text-align: center;
+}
+
+.viewsmall{
+    font-size: 10px;
+}
+
+@media screen and (max-width: 1300px) {
+    .wrapper{
+        margin-top: 0;
+        margin-left: 0;
+    }
+    .cardeditor{
+        grid-template-columns: 1fr;
+    }
+    .buttons{
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .wrapper{
+        grid-template-columns: 1fr;
+        margin-top: 0;
+        margin-left: 0;
+        text-align: center;
+    }
+    .cardPreview{
+        margin-left: 5%;
+        margin-top: 5%;
+        
+    }
+    .cardeditor{
+        margin-left: 0;
+    }
+    .cbutton{
+        margin-left: 30%;
+    }
 }
 
