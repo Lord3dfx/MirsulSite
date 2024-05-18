@@ -28,14 +28,15 @@
 
 .sbutton{
 background: #8DFFB9;
-padding: 5px;
-width: 90px;
+padding: 7px 6px 6px 6px;
+margin-bottom: 5px;
 text-align: center;
-text-decoration: none;
 color: black;
 cursor: pointer;
 margin-right: 10px;
 transition: all 0.5s ease;
+font-size: 14px;
+border: none;
 }
 .cbutton{
     background: #FF0000;

@@ -180,7 +180,7 @@ else{
                 <input type="file" accept="image/*" name="imageload" onChange={(e)=>loadImage(e)} ></input>
                 </div>
             <div className={styles.buttons}>
-            <a className={styles.sbutton} onClick={ () => sendCard()}>Сохранить</a>
+            <button className={styles.sbutton} onClick={ () => sendCard()}>Сохранить</button>
             <a className={styles.cbutton} href={`/`}>Назад</a>
             </div>
         </div>
