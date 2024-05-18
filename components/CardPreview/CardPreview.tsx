@@ -17,8 +17,8 @@ export function CardPreview({update, id, img, name, deck ,className, ...props}:C
     return(
     <div className={styles.card} {...props}>
         <Image quality={50} src={img || '/no-image-small.jpg'} alt={name || ''} width={320} height={200}/>
-        <p>{name}</p>
-        <p>{deck}</p>
+        <p className={styles.cname}>{name}</p>
+        <p className={styles.cdeck}>{deck}</p>
         <div className={styles.editblock}>
         <Link href={`/edit/${id}`}><p className={styles.edit}><Edit/></p></Link>
         <p className={styles.delete} onClick={() => deleteCard(id!)}><Delete/></p>
