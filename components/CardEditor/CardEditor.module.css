@@ -278,13 +278,12 @@ transition: all 0.5s ease;
 @media screen and (max-width: 850px) {
     .wrapper{
         grid-template-columns: 1fr;
-        margin-top: 0;
-        margin-left: 0;
+        margin: 0;
         padding-bottom: 15px;
         text-align: center;
     }
     .cardPreview{
-        margin-left: 2%;
+        margin-left: 1%;
         margin-top: 5%;
         
     }
