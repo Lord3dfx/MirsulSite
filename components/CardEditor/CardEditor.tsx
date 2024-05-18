@@ -103,11 +103,12 @@ else{
 
     return(
     <div className={styles.wrapper} {...props}>
-        <div className={styles.cardPreview}>
-            <p ref={myRef} className={cn(styles.note,{
+        <p ref={myRef} className={cn(styles.note,{
                 [styles.show]: showNote,
                 [styles.hide]: !showNote
             })}></p>
+        <div className={styles.cardPreview}>
+            
             <Image className={styles.img} quality={50} src={card?.img || '/no-image-large.jpg'} alt="Изображение" width={400} height={250}/>
             <p className={styles.viewname}>{card?.cardName}</p>
             <p className={styles.viewrange}>{card?.cardRange}</p>
