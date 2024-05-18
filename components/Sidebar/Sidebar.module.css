@@ -82,7 +82,7 @@
 @media screen and (max-width: 840px) {
     .sidebar{
         height: 100%;
-        left: -56.5%;
+        left: -57.5%;
         transition: all 0.5s ease;
         width: 200px;
         z-index: 2;
