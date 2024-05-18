@@ -1,6 +1,7 @@
 .table{
     display: grid;
-    right: 5%;
+    position: relative;
+    
     grid-template-columns: repeat(3, 1fr);
     margin-left: 350px;
 }
@@ -17,9 +18,14 @@
         grid-template-columns: 1fr 1fr;
     }
 }
+
 @media screen and (max-width: 840px) {
     .table{
         grid-template-columns: 1fr;
-        margin-left: 250px
+        width: 100%;
+        height: 100%;
+        margin-left: 0;
+        left: 55px;
+        
     }
 }

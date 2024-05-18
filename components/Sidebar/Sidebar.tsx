@@ -2,10 +2,11 @@
 
 import { SidebarProps } from "./Sidebar.props";
 import styles from './Sidebar.module.css'
-import SearchIcon from '@/public/search.svg';
 import Image from 'next/image';
-import { useRef} from "react";
+import { useRef, useState} from "react";
+import cn from "classnames";
 export function Sidebar({searchCards, className, ...props}:SidebarProps):JSX.Element {
+    const [switcher, setSwitcher] = useState(0)
 
     const myRef = useRef<HTMLInputElement>(null)
 
@@ -14,8 +15,15 @@ export function Sidebar({searchCards, className, ...props}:SidebarProps):JSX.Ele
         searchCards && searchCards(myRef.current!.value.toString());
     }
 
+    function Switch(){
+        setSwitcher(switcher => switcher === 0 ? 1 : 0)
+        
+    }
+
     return(
-    <div className={styles.sidebar} {...props}>
+    <div className={cn(styles.sidebar,{
+        [styles.opensidebar]: switcher === 1
+    })} {...props}>
         <Image src={"/Logo.jpg"} alt="logo" width={150} height={150}/>
         <a className={styles.newcard} href="/new">Добавить карту</a>
         <p>Найти карту</p>
@@ -29,6 +37,9 @@ export function Sidebar({searchCards, className, ...props}:SidebarProps):JSX.Ele
             <p>По типу</p>
             <p>По дате создания</p>
         </div>
+        <p className={cn(styles.switcher,{
+            [styles.show]: switcher === 1
+        })} onClick={Switch}>{switcher === 0 ? '>>' : '<<'}</p>
     </div>
     )
 }

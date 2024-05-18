@@ -283,15 +283,19 @@ transition: all 0.5s ease;
         text-align: center;
     }
     .cardPreview{
-        margin-left: 5%;
+        margin-left: 4%;
         margin-top: 5%;
         
     }
     .cardeditor{
         margin-left: 0;
+        margin-bottom: 5px;;
+    }
+    .cardeditor input{
+        margin-top: 5px;
     }
     .cbutton{
         margin-left: 30%;
-    }
+            }
 }
 

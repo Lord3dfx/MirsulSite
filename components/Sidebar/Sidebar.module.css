@@ -14,7 +14,7 @@
 }
 
 .sort{
-    border: 1px solid #000;   
+    border: 1px solid #000;  
 }
 
 .sort p{
@@ -66,4 +66,51 @@
 
 .newcard:hover{
     background:  #8177f8;
+}
+.switcher{
+    position: absolute;
+    width: 30px;
+    height: 100vh;
+    align-content: center;
+    text-align: center;
+    left: 240px;
+    background: #625858;
+    color: white;
+    visibility: hidden;
+}
+
+@media screen and (max-width: 840px) {
+    .sidebar{
+        height: 100%;
+        left: -56.5%;
+        transition: all 0.5s ease;
+        width: 200px;
+        z-index: 2;
+    }
+    
+    
+    .switcher{
+        visibility: visible;
+    }
+    
+    .opensidebar {
+    left: 0;
+    }
+
+    .show.switcher::after{
+        visibility: visible;
+    }
+
+    .switcher::after{
+        content: '';
+        width: 400px;
+        height: 100vh;
+        margin: 4px;
+        top: -4px;
+        position: absolute;
+        backdrop-filter: blur(2px);
+        visibility: hidden;
+    }
+
+    
 }
