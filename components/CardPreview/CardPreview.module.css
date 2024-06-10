@@ -55,12 +55,17 @@
     transform: scale(1.05);
 }
 .darktext{
+    background: none;
     color: #fff
 }
 
 @media screen and (max-width: 840px) {
     .card:hover{
         transform: none;
+    }
+    .darktext{
+        background: black !important;
+        color: #ffffff
     }
     .card{
         display: flex;

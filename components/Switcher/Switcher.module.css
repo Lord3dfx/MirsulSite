@@ -31,3 +31,9 @@
     background: rgb(255, 255, 255);
     left: 44px;
 }
+
+@media screen and (max-width: 840px) {
+    .wrapper{
+        bottom: 70px;
+    }
+}

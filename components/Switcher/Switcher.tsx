@@ -11,12 +11,11 @@ export default function Switcher() {
     const [switcher, setSwitcher] = useState(0)
 
     useEffect(() => {
-        setSwitcher(theme === 'dark' ? 1 : 0)
+        setSwitcher(theme === 'light' ? 0 : 1)
     },[theme])
 
     const toggle = () =>{
             toggleTheme()
-            console.log(theme + " " + switcher)
     }
 
     return (

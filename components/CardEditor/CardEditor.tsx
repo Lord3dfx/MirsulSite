@@ -3,10 +3,11 @@
 import { CardEditorProps } from "./CardEditor.props";
 import styles from './CardEditor.module.css'
 import { cardapi } from "@/api/cardapi";
-import {  useEffect, useRef, useState } from "react";
+import {  useContext, useEffect, useRef, useState } from "react";
 import { ICard } from "@/interfaces/cardData";
 import Image from 'next/image'
 import cn from "classnames"
+
 
 
 
@@ -15,9 +16,12 @@ export function CardEditor({id ,className, ...props}:CardEditorProps) {
     const [card, setCard] = useState<ICard | null>(null)
     const [showNote, setShowNote] = useState<boolean>(false)
     const myRef = useRef<HTMLParagraphElement>(null)
+    const [theme, setTheme] = useState<string | null>(null)
     
 
     useEffect(()=> {
+        const theme = localStorage.getItem('theme')
+        setTheme(theme)
         if(!id)
             {
                 setCard(null)
@@ -30,8 +34,9 @@ export function CardEditor({id ,className, ...props}:CardEditorProps) {
                 setCard(null)
             }
         }
-
+        
         getCard(id);
+        
     }
     },[id])
 
@@ -102,10 +107,12 @@ else{
     }
 
     return(
-    <div className={styles.wrapper} {...props}>
+    <div className={cn(styles.wrapper,{
+        [styles.darkbg]: theme === 'dark',
+    })}>
         <p ref={myRef} className={cn(styles.note,{
                 [styles.show]: showNote,
-                [styles.hide]: !showNote
+                [styles.hide]: !showNote,
             })}></p>
         <div className={styles.cardPreview}>
             
@@ -131,10 +138,14 @@ else{
             <p className={cn(styles.viewthirdm,{
                 [styles.viewsmall]: card?.thirdmech?.length! > 3
             })} hidden={!card?.thirdmech}>{card?.thirdmech}</p>
-            <p className={styles.viewid}>ID карты: {card?.id}</p>
+            <p className={cn(styles.viewid,{
+                [styles.darktext]: theme === 'dark'
+            })}>ID карты: {card?.id}</p>
             
         </div>
-        <div className={styles.cardeditor}>
+        <div className={cn(styles.cardeditor,{
+            [styles.darktheme]: theme === 'dark'
+        })}>
                 <div>
                 <p>Имя карты</p>
                 <input onChange={(e)=>writeCard(e.target)} type="text" name="cardName" defaultValue={card?.cardName} size={40}/>
