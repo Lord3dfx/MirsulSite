@@ -53,8 +53,8 @@
   @media screen and (max-width: 840px) {
     .wrapper{
         display: block;
-        
-        min-height: 100vh;
+        min-width: 355px;
+        width: 355px;
         
     }
   }
