@@ -3,6 +3,7 @@
     position: relative;
     grid-template-columns: repeat(3, 1fr);
     margin-left: 350px;
+    
 }
 
 .notfound{
@@ -10,6 +11,10 @@
     top: 50%;
     left: 50%;
 
+}
+
+.darktable{
+    background: #2c2c2c;
 }
 
 @media screen and (max-width: 1200px) {
@@ -23,6 +28,8 @@
         grid-template-columns: 1fr;
         margin-left: 0;
         left:50px;
+        min-width: 100wv;
+        width: 100%;
     }
    
 }

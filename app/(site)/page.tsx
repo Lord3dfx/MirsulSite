@@ -1,16 +1,20 @@
 'use client'
 
-import { Sidebar, Table } from "@/components";
-import styles from "./page.module.css";
 import { cardapi } from "@/api/cardapi";
 import { ICard } from "@/interfaces/cardData";
 import { useEffect, useState } from "react";
-import Loading from "./loading";
+
+import { AppContextProvider } from "@/context/app.context";
+import { Wrapper } from "@/components";
+
+
+
 
 
 export default function Home() {
 const [cards, setCards] = useState<ICard[]>([])
 const [filter, setFilter] = useState<ICard[]>([])
+
 
 const fetchData = async () => {
   const data:ICard[] = await cardapi.getAllCards()
@@ -40,11 +44,8 @@ useEffect(() => {
   }
 
   return(
-    <div className={styles.wrapper}>
-      <Sidebar searchCards={searchCards}/>
-      {cards.length > 0 
-        ? <Table cards={filter} update={fetchData}/>
-        : <Loading/>}
-    </div>
+    <AppContextProvider>
+    <Wrapper cards={cards} fetchData={fetchData} searchCards={searchCards} filter={filter}/>
+    </AppContextProvider>
   )
 }

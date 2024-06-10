@@ -9,11 +9,11 @@
     padding-left: 20px;
     align-content: start;
     justify-items: center;
-    
+    transition: all 0.5s ease;
 }
 
 .sort{
-    border: 1px solid #000;  
+    border: 1px solid #000000;  
 }
 
 .sort p{
@@ -76,6 +76,14 @@
     background: #625858;
     color: white;
     visibility: hidden;
+}
+
+.darkbg{
+    background: #2c2c2c;
+}
+
+.darktext{
+    color: #fff
 }
 
 @media screen and (max-width: 840px) {

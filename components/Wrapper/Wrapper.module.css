@@ -1,4 +1,11 @@
-
+.wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #ffffff;
+    min-height: 100vh;
+    height: 100%;
+    transition: all 0.5s ease;
+}
 .divloading{
   position: absolute;
     top: 50%;
@@ -34,6 +41,10 @@
      opacity: 0.83;
      transform: rotate(60deg);
   }
+
+  .darkwrapper{
+    background: #2c2c2c;
+  }
   
   @keyframes l23 {
     100% {transform: rotate(1turn)}
@@ -43,6 +54,7 @@
     .wrapper{
         display: block;
         width: 350px;
-        height: 100vh;
+        min-height: 100vh;
+        height: 100%;
     }
   }
