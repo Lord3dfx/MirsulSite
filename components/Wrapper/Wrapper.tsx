@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { AppContext } from "@/context/app.context";
 import { WrapperProps } from "./Wrapper.props";
 
-export function Wrapper({cards, fetchData, searchCards, filter}:WrapperProps):JSX.Element {
+export function Wrapper({cards, fetchData, searchCards, sortCards,filter}:WrapperProps):JSX.Element {
 
     const {theme} = useContext(AppContext)
 
@@ -15,7 +15,7 @@ export function Wrapper({cards, fetchData, searchCards, filter}:WrapperProps):JS
     <div className={cn(styles.wrapper,{
         [styles.darkwrapper]: theme === 'dark'
       })}>
-        <Sidebar searchCards={searchCards}/>
+        <Sidebar searchCards={searchCards} sortCards={sortCards}/>
         {cards.length > 0 
           ? <Table cards={filter} update={fetchData}/>
           : <Loading/>}

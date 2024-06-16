@@ -5,5 +5,6 @@ export interface WrapperProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivEl
     cards: ICard[],
     fetchData: () => void,
     searchCards: (param:string) => void,
-    filter: ICard[]
+    filter: ICard[],
+    sortCards: (param:string, search?:string, sortParams?:string) => void
 }

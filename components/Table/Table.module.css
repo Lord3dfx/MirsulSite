@@ -3,7 +3,7 @@
     position: relative;
     grid-template-columns: repeat(3, 1fr);
     margin-left: 350px;
-    
+    transition: all 0.5s ease;
 }
 
 .notfound{
