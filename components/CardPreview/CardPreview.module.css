@@ -29,9 +29,6 @@
 
 .edit{
     background: #dfe36f;
-    
-    border-bottom: 1px solid #000;
-    border-top: 1px solid #000;
     padding: 3.5px 0px;
 }
 .edit:hover{
@@ -41,14 +38,25 @@
 
 .delete{
     background: #dfe36f;
-    
     cursor: pointer;
-    padding: 3.5px 0px;
-    border-bottom: 1px solid #000;
+    padding: 3.1px 0px;
+    border-top: 1px solid #000;
 }
 .delete:hover{
     background:  #8177f8;
   
+}
+.download{
+    position: absolute;
+    left: 0;
+    bottom: 75px;
+    background: #dfe36f;
+    cursor: pointer;
+    border: 1px solid black;
+    border-left: none
+}
+.download:hover{
+    background:  #8177f8;
 }
 
 .card:hover{
