@@ -26,7 +26,7 @@ export const cardapi = {
             },
             
         });
-        return res
+        return res.json()
     },
 
     saveCard: async (id:string, card:ICard) => {
@@ -38,7 +38,7 @@ export const cardapi = {
             },
             
         });
-        return res
+        return res.json()
     },
 
     deleteCard: async (id:string) => {

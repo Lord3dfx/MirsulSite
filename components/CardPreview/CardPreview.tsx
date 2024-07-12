@@ -56,10 +56,10 @@ export function CardPreview({update, id, img, name, deck ,className, ...props}:C
             [styles.darktext]: theme === 'dark'
         })}>{deck}</p>
         <div className={styles.editblock}>
-        <Link href={`/edit/${id}`}><p className={styles.edit}><Edit/></p></Link>
-        <p className={styles.delete} onClick={() => deleteCard(id!)}><Delete/></p>
+        <Link href={`/edit/${id}`}><p className={styles.edit} title="Редактировать карту"><Edit/></p></Link>
+        <p className={styles.delete} onClick={() => deleteCard(id!)} title="Удалить карту"><Delete/></p>
         </div>
-        <button onClick={DownloadCard} className={styles.download}><Download/></button>
+        <button onClick={DownloadCard} className={styles.download} title="Загрузить карту"><Download/></button>
     </div>
     )
 }

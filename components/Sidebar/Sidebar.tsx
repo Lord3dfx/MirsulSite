@@ -7,6 +7,8 @@ import { useContext, useEffect, useRef, useState} from "react";
 import cn from "classnames";
 import Switcher from "../Switcher/Switcher";
 import { AppContext } from "@/context/app.context";
+import { S3Client } from "@aws-sdk/client-s3"
+import { PutObjectCommand } from "@aws-sdk/client-s3";
 export function Sidebar({searchCards, sortCards, className, ...props}:SidebarProps):JSX.Element {
     const [switcher, setSwitcher] = useState(0)
     const[sortParams, setSortParams] = useState({
@@ -20,6 +22,27 @@ export function Sidebar({searchCards, sortCards, className, ...props}:SidebarPro
     useEffect(() => {
         sortCards && sortCards(sortParams.type, myRef.current!.value.toString(), sortParams.search)
     },[sortParams])
+
+    const creds = {AccessKeyId: 'YCAJETt9ML6QsgYLNKJMe5m-H',
+        SecretKey: 'YCPn1lsei4GUEc3GQcixk3Hi6BYdU0mUED0lggZc',
+       }
+
+const aws = new S3Client({region: "ru-central1", endpoint: "https://storage.yandexcloud.net", credentials: {accessKeyId: creds.AccessKeyId, secretAccessKey: creds.SecretKey}}) 
+
+const params = {
+Bucket: "mirsulcb", // Имя бакета, например 'sample-bucket-101'.
+Key: "my-txt.txt", // Имя объекта, например 'sample_upload.txt'.
+Body: "Hello world!", // Содержимое объекта, например 'Hello world!".
+};
+
+const results = async ()=> await aws.send(new PutObjectCommand(params),(error, data)=>{
+if(error){
+console.log(error)
+}
+if(data){
+console.log(data)
+}
+});
 
     function Clear(){
         myRef.current!.value = '';
@@ -85,6 +108,7 @@ export function Sidebar({searchCards, sortCards, className, ...props}:SidebarPro
                 [styles.activeasc]: sortParams.type === 'byrange' && sortParams.search === 'asc',
                 [styles.activedesc]: sortParams.type === 'byrange' && sortParams.search === 'desc'
             })}>По рангу</button>
+            <button onClick={results}>click</button>
         </div>
         <Switcher/>
         <p className={cn(styles.switcher,{

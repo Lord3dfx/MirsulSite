@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.614.0",
     "classnames": "^2.5.1",
     "html2canvas": "^1.4.1",
     "next": "^14.2.2",
