@@ -23,26 +23,7 @@ export function Sidebar({searchCards, sortCards, className, ...props}:SidebarPro
         sortCards && sortCards(sortParams.type, myRef.current!.value.toString(), sortParams.search)
     },[sortParams])
 
-    const creds = {AccessKeyId: 'YCAJETt9ML6QsgYLNKJMe5m-H',
-        SecretKey: 'YCPn1lsei4GUEc3GQcixk3Hi6BYdU0mUED0lggZc',
-       }
-
-const aws = new S3Client({region: "ru-central1", endpoint: "https://storage.yandexcloud.net", credentials: {accessKeyId: creds.AccessKeyId, secretAccessKey: creds.SecretKey}}) 
-
-const params = {
-Bucket: "mirsulcb", // Имя бакета, например 'sample-bucket-101'.
-Key: "my-txt.txt", // Имя объекта, например 'sample_upload.txt'.
-Body: "Hello world!", // Содержимое объекта, например 'Hello world!".
-};
-
-const results = async ()=> await aws.send(new PutObjectCommand(params),(error, data)=>{
-if(error){
-console.log(error)
-}
-if(data){
-console.log(data)
-}
-});
+    
 
     function Clear(){
         myRef.current!.value = '';
@@ -108,7 +89,6 @@ console.log(data)
                 [styles.activeasc]: sortParams.type === 'byrange' && sortParams.search === 'asc',
                 [styles.activedesc]: sortParams.type === 'byrange' && sortParams.search === 'desc'
             })}>По рангу</button>
-            <button onClick={results}>click</button>
         </div>
         <Switcher/>
         <p className={cn(styles.switcher,{
