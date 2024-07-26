@@ -7,8 +7,7 @@ import { useContext, useEffect, useRef, useState} from "react";
 import cn from "classnames";
 import Switcher from "../Switcher/Switcher";
 import { AppContext } from "@/context/app.context";
-import { S3Client } from "@aws-sdk/client-s3"
-import { PutObjectCommand } from "@aws-sdk/client-s3";
+
 export function Sidebar({searchCards, sortCards, className, ...props}:SidebarProps):JSX.Element {
     const [switcher, setSwitcher] = useState(0)
     const[sortParams, setSortParams] = useState({
