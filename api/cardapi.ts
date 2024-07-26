@@ -1,6 +1,5 @@
 import { api } from "@/helpers/api";
 import { ICard} from "@/interfaces/cardData";
-import { s3api } from "./s3api";
 
 export const cardapi = {
     getAllCards: async ():Promise<ICard[]> => {
@@ -27,7 +26,7 @@ export const cardapi = {
             },
             
         });
-        return res
+        return res.json()
     },
 
     saveCard: async (id:string, card:ICard) => {
@@ -39,11 +38,10 @@ export const cardapi = {
             },
             
         });
-        return res
+        return res.json()
     },
 
     deleteCard: async (id:string) => {
-        s3api.deleteFile(id)
         const res = await fetch(api.getAllCards + id, {
             method: 'DELETE',
         });

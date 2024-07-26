@@ -26,29 +26,29 @@ export function CardPreview({update, id, img, name, deck ,className, ...props}:C
     }
 
     const DownloadCard = async ()=>{
-        const card = await cardapi.getCardByID(id!)
-        const wrapper = document.createElement("div");
-        wrapper.style.width = "450px"
-        const output = document.body.appendChild(wrapper);
-        const downloadCard = renderToString(<CardToDownload {...card}/>)
-        output.innerHTML = downloadCard
-        const canvas = await html2canvas(output);
-        const data = canvas.toDataURL('image/jpg')
-        const link = document.createElement('a');
+    const card = await cardapi.getCardByID(id!)
+    const wrapper = document.createElement("div");
+    wrapper.style.width = "450px"
+    const output = document.body.appendChild(wrapper);
+    const downloadCard = renderToString(<CardToDownload {...card}/>)
+    output.innerHTML = downloadCard
+    const canvas = await html2canvas(output);
+    const data = canvas.toDataURL('image/jpg')
+    const link = document.createElement('a');
 
-        link.href = data;
-        link.download = `card-${id}.jpg`;
+    link.href = data;
+    link.download = `card-${id}.jpg`;
 
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        document.body.removeChild(wrapper);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    document.body.removeChild(wrapper);
     }
 
     return(
     <div className={styles.card} {...props}>
          
-        <Image quality={40} loading="lazy" src={img || '/no-image-small.jpg'} alt={name || ''} width={320} height={200}/>
+        <Image quality={50} src={img || '/no-image-small.jpg'} alt={name || ''} width={320} height={200}/>
         <p className={cn(styles.cname,{
             [styles.darktext]: theme === 'dark'
         })}>{name}</p>

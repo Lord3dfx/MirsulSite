@@ -3,12 +3,10 @@
 import { CardEditorProps } from "./CardEditor.props";
 import styles from './CardEditor.module.css'
 import { cardapi } from "@/api/cardapi";
-import { useEffect, useRef, useState } from "react";
+import {  useContext, useEffect, useRef, useState } from "react";
 import { ICard } from "@/interfaces/cardData";
 import Image from 'next/image'
 import cn from "classnames"
-import { s3api } from "@/api/s3api";
-
 
 
 
@@ -16,7 +14,6 @@ import { s3api } from "@/api/s3api";
 export function CardEditor({id ,className, ...props}:CardEditorProps) {
 
     const [card, setCard] = useState<ICard | null>(null)
-    const [pic, setPic] = useState({image: '', prew: ''})
     const [showNote, setShowNote] = useState<boolean>(false)
     const myRef = useRef<HTMLParagraphElement>(null)
     const [theme, setTheme] = useState<string | null>(null)
@@ -43,47 +40,30 @@ export function CardEditor({id ,className, ...props}:CardEditorProps) {
     }
     },[id])
 
-    
-
-    /*const results = async ()=> await aws.send(new PutObjectCommand(params),(error, data)=>{
-        if(error){
-        console.log(error)
-        }
-        if(data){
-        console.log(data)
-        }
-        });
-*/
     const writeCard = (e:any) =>{
+   
         const updateCard:ICard = {...card, [e.name]: e.value}
         setCard(updateCard)
     }
 
     const sendCard = async () => {
         if(card !== null){
-
         if(!card?.id){
-
             const res = await cardapi.createCard(card!)
             const rescard:Promise<ICard> = await res.json()
             
-
             if(res.status === 200){
-                const updatecard = {...card, img: `https://storage.yandexcloud.net/mirsulcb/images/${(await rescard).id}.jpg`, id: (await rescard).id}
-                setCard(updatecard)
-                s3api.uploadFile((await rescard).id!, pic.image).then(()=>ShowNote('Карта успешно создана', '#47ff6c'))
-                await cardapi.saveCard((await rescard).id!,
-                {...card, img: `https://storage.yandexcloud.net/mirsulcb/images/${(await rescard).id}.jpg`})
+                ShowNote('Карта успешно создана', '#47ff6c')
+                setCard({...card, id: (await rescard).id})
             }
             else{
                 ShowNote('Что-то пошло не так...', '#ff4a3d')
             }
         }
         else{
-            const res = await cardapi.saveCard(card.id, card!)
+            const res =await cardapi.saveCard(card.id, card!)
             if(res.status === 204){
                 ShowNote('Карта сохранена', '#47ff6c')
-                s3api.uploadFile(card.id!, pic.image)
             }
             else{
                 ShowNote('Что-то пошло не так...', '#ff4a3d')
@@ -121,7 +101,8 @@ else{
         const reader = new FileReader()
         reader.readAsDataURL(pic)
         reader.onload = ()=>{
-            setPic({image: pic, prew: reader.result as string})
+            const updatecard = {...card, img: reader.result as string}
+            setCard(updatecard)
         }
     }
 
@@ -135,7 +116,7 @@ else{
             })}></p>
         <div className={styles.cardPreview}>
             
-            <Image className={styles.img} loading="lazy" quality={30} src={pic?.prew || card?.img || '/no-image-large.jpg'} alt="Изображение" width={400} height={250}/>
+            <Image className={styles.img} quality={50} src={card?.img || '/no-image-large.jpg'} alt="Изображение" width={400} height={250}/>
             <p className={styles.viewname}>{card?.cardName}</p>
             <p className={styles.viewrange}>{card?.cardRange}</p>
             <p className={styles.viewdeck}>{card?.deck}</p>
@@ -207,7 +188,7 @@ else{
 
                 <div className={styles.upload}>
                 <p>Загрузить изображение</p>
-                <input type="file" accept="image/jpg" name="imageload" onChange={(e)=>loadImage(e)} ></input>
+                <input type="file" accept="image/*" name="imageload" onChange={(e)=>loadImage(e)} ></input>
                 </div>
             <div className={styles.buttons}>
             <button className={styles.sbutton} onClick={ () => sendCard()}>Сохранить</button>
