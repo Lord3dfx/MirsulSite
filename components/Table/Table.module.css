@@ -13,10 +13,6 @@
 
 }
 
-.darktable{
-    background: #2c2c2c;
-}
-
 @media screen and (max-width: 1200px) {
     .table{
         grid-template-columns: 1fr 1fr;
