@@ -9,7 +9,7 @@ export const CardToDownload = forwardRef((props:ICard, ref: any)=> {
         <div className={styles.wrapper}  ref={ref}>
         <div className={styles.cardPreview}>
             
-            <Image className={styles.img} quality={50} src={props?.img || '/no-image-large.jpg'} alt="Изображение" width={400} height={250}/>
+            <Image className={styles.img} quality={100} src={props.img || '/no-image-large.jpg'} alt="Изображение" width={400} height={250}/>
             <p className={styles.viewname}>{props?.cardName}</p>
             <p className={styles.viewrange}>{props?.cardRange}</p>
             <p className={styles.viewdeck}>{props?.deck}</p>

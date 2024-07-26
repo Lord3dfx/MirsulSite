@@ -1,4 +1,14 @@
 module.exports = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'storage.yandexcloud.net',
+        port: '',
+        pathname: '/mirsulcb/**',
+      },
+    ],
+  },
   async headers() {
     return [
         {
